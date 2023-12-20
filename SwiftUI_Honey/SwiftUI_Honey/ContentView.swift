@@ -16,7 +16,7 @@ struct ContentView: View {
 //        ProfileDetailAboutMeView()
 //            .environmentObject(ViewStore(store, observe: {$0}))
 //
-        ProfileDetailTopPhotoView()
+        ProfileDetailTopMediaView()
     }
 }
 
@@ -27,6 +27,6 @@ struct ContentView_Previews: PreviewProvider {
 //        ProfileDetailAboutMeView()
 //            .environmentObject(ViewStore(store, observe: {$0}))
 //
-        ProfileDetailTopPhotoView()
+        ProfileDetailTopMediaView()
     }
 }
