@@ -149,7 +149,7 @@
 		AE8393352B2C128B003A0541 /* ProfileDetail */ = {
 			isa = PBXGroup;
 			children = (
-				AEF3DD0B2B3155AB00706F2F /* TopPhotoView */,
+				AEF3DD0B2B3155AB00706F2F /* TopMediaView */,
 				AE8393392B2C12DC003A0541 /* Feature */,
 				AE8393362B2C129E003A0541 /* AboutMe */,
 			);
@@ -189,13 +189,13 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		AEF3DD0B2B3155AB00706F2F /* TopPhotoView */ = {
+		AEF3DD0B2B3155AB00706F2F /* TopMediaView */ = {
 			isa = PBXGroup;
 			children = (
 				AEF3DD142B317D7B00706F2F /* ProfileDetailTopMediaView.swift */,
 				AEF3DD1B2B326B6D00706F2F /* PageControl.swift */,
 			);
-			path = TopPhotoView;
+			path = TopMediaView;
 			sourceTree = "<group>";
 		};
 		AEF3DD182B31863300706F2F /* Helper */ = {
