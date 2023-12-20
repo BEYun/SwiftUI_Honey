@@ -14,7 +14,7 @@ public struct ProfileDetailFeature: Reducer {
     public init() {}
     
     public struct State: Equatable {
-        public var member: Member?
+        public var member: Member? = someMember
         public var isTranslated: Bool = false
         public var isOpen: Bool = false
     }
@@ -23,6 +23,7 @@ public struct ProfileDetailFeature: Reducer {
         case openProfile
         // AboutMeView
         case translateButtonTapped
+        case aboutMeViewTapped
     }
     
     public var body: some Reducer<State, Action> {
@@ -33,6 +34,10 @@ public struct ProfileDetailFeature: Reducer {
                 
             case .translateButtonTapped:
                 state.isTranslated.toggle()
+                return .none
+                
+            case .aboutMeViewTapped:
+                state.isOpen.toggle()
                 return .none
             }
         }

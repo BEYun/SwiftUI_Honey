@@ -24,7 +24,7 @@ public struct ProfileDetailAboutMeView: View {
         .cornerRadius(12)
         .contentShape(Rectangle())
         .onTapGesture {
-            print("전체열람 팝업 띄우기")
+            viewStore.send(.aboutMeViewTapped)
         }
     }
 
@@ -71,7 +71,7 @@ public struct ProfileDetailAboutMeView: View {
     @ViewBuilder
     var marriageTypeView: some View {
         VStack(spacing: 8) {
-            //            Group {
+//                        Group {
             ForEach([("First name", viewStore.member?.firstName),
                      ("Sexual Orientation", viewStore.member?.sexualOrientationStr)], id: \.0) { title, content in
                 AboutMeContainer(title: title, content: content)
@@ -124,6 +124,8 @@ public struct ProfileDetailAboutMeView: View {
     }
     
     struct AboutMeContainer: View {
+        @EnvironmentObject var viewStore: ViewStoreOf<ProfileDetailFeature>
+        
         var title: String
         var content: String?
         
@@ -131,6 +133,7 @@ public struct ProfileDetailAboutMeView: View {
             HStack(alignment: .top, spacing: 8) {
                 AboutMeTitle(text: title)
                 AboutMeContent(text: content)
+                    .environmentObject(viewStore)
             }
             .frame(maxWidth: .infinity)
         }
@@ -156,8 +159,9 @@ public struct ProfileDetailAboutMeView: View {
     }
     
     struct AboutMeContent: View {
+        @EnvironmentObject var viewStore: ViewStoreOf<ProfileDetailFeature>
+        
         var text: String? = ""
-        var isOpen: Bool = false
         
         var body: some View {
             contentView
@@ -165,7 +169,7 @@ public struct ProfileDetailAboutMeView: View {
         
         @ViewBuilder
         var contentView: some View {
-            if isOpen {
+            if viewStore.isOpen {
                 emptyCheckedText
             } else {
                 PaintedView()
@@ -185,6 +189,8 @@ public struct ProfileDetailAboutMeView: View {
     }
     
     struct PaintedView: View {
+        @EnvironmentObject var viewStore: ViewStoreOf<ProfileDetailFeature>
+        
         var isFirstContent: Bool = false
         var isHighlited: Bool = true
         var lines: Int = 2
@@ -220,7 +226,7 @@ public struct ProfileDetailAboutMeView: View {
             
             return VStack(alignment: .leading, spacing: 4) {
                 ForEach(0..<self.lines, id: \.self) { _ in
-                    Image(systemName: image)
+                    Image(image)
                         .resizable()
                         .frame(width: isFirstContent ? 80 : random, height: 16)
                         .offset(y: 4)
@@ -251,7 +257,7 @@ public struct ProfileDetailAboutMeView: View {
                     )
 
             } else {
-                Image(systemName: "icoUnlockCircle")
+                Image("icoUnlockCircle")
                     .resizable()
                     .frame(width: 24, height: 24)
             }
@@ -261,6 +267,9 @@ public struct ProfileDetailAboutMeView: View {
 
 struct ProfileDetailAboutMeView_Previews: PreviewProvider {
     static var previews: some View {
+        let store = Store(initialState: ProfileDetailFeature.State(), reducer: { ProfileDetailFeature() })
+        
         ProfileDetailAboutMeView()
+            .environmentObject(ViewStore(store, observe: {$0}))
     }
 }

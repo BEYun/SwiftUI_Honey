@@ -7,20 +7,26 @@
 
 import SwiftUI
 
+import ComposableArchitecture
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+//        let store = Store(initialState: ProfileDetailFeature.State(), reducer: { ProfileDetailFeature() })
+//
+//        ProfileDetailAboutMeView()
+//            .environmentObject(ViewStore(store, observe: {$0}))
+//
+        ProfileDetailTopPhotoView()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+//        let store = Store(initialState: ProfileDetailFeature.State(), reducer: { ProfileDetailFeature() })
+//
+//        ProfileDetailAboutMeView()
+//            .environmentObject(ViewStore(store, observe: {$0}))
+//
+        ProfileDetailTopPhotoView()
     }
 }
