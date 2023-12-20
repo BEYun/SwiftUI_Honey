@@ -31,22 +31,21 @@ struct ProfileDetailTopMediaView: View {
                                 let pageOffset = minX - (size.width * CGFloat(fakeIndex(Page)))
                                 // offset을 page로 변환
                                 let pageProgress = pageOffset / size.width
-                                print(pageProgress)
                                 
 //                                // 무한 스크롤 로직
-//                                if -pageProgress < 1.0 {
-//                                    // 첫번째 아이템의 복사본인 마지막 페이지로 이동
-//                                    if fakedPages.indices.contains(fakedPages.count - 1) {
-//                                        currentPage = fakedPages[fakedPages.count - 1].id.uuidString
-//                                    }
-//                                }
-//
-//                                if -pageProgress > CGFloat(fakedPages.count - 1) {
-//                                    // 마지막 아이템의 복사본인 첫번째 페이지로 이동
-//                                    if fakedPages.indices.contains(1) {
-//                                        currentPage = fakedPages[1].id.uuidString
-//                                    }
-//                                }
+                                if -pageProgress < 1.0 {
+                                    // 첫번째 아이템의 복사본인 마지막 페이지로 이동
+                                    if fakedPages.indices.contains(fakedPages.count - 1) {
+                                        currentPage = fakedPages[fakedPages.count - 1].id.uuidString
+                                    }
+                                }
+
+                                if -pageProgress > CGFloat(fakedPages.count - 1) {
+                                    // 마지막 아이템의 복사본인 첫번째 페이지로 이동
+                                    if fakedPages.indices.contains(1) {
+                                        currentPage = fakedPages[1].id.uuidString
+                                    }
+                                }
                             }
                     }
                 })
