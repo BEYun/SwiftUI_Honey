@@ -11,22 +11,24 @@ import ComposableArchitecture
 
 struct ContentView: View {
     var body: some View {
-//        let store = Store(initialState: ProfileDetailFeature.State(), reducer: { ProfileDetailFeature() })
-//
+        let store = Store(initialState: ProfileDetailFeature.State(), reducer: { ProfileDetailFeature() })
+
 //        ProfileDetailAboutMeView()
-//            .environmentObject(ViewStore(store, observe: {$0}))
-//
-        ProfileDetailTopMediaView()
+        ProfileDetailUserAuthView()
+            .environmentObject(ViewStore(store, observe: {$0}))
+
+//        ProfileDetailTopMediaView()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-//        let store = Store(initialState: ProfileDetailFeature.State(), reducer: { ProfileDetailFeature() })
-//
+        let store = Store(initialState: ProfileDetailFeature.State(), reducer: { ProfileDetailFeature() })
+
 //        ProfileDetailAboutMeView()
-//            .environmentObject(ViewStore(store, observe: {$0}))
-//
-        ProfileDetailTopMediaView()
+        ProfileDetailUserAuthView()
+            .environmentObject(ViewStore(store, observe: {$0}))
+
+//        ProfileDetailTopMediaView()
     }
 }

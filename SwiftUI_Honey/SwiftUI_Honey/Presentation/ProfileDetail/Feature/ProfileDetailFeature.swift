@@ -15,6 +15,7 @@ public struct ProfileDetailFeature: Reducer {
     
     public struct State: Equatable {
         public var member: Member? = someMember
+        public var auth: Auth? = someAuth
         public var isTranslated: Bool = false
         public var isOpen: Bool = false
     }
