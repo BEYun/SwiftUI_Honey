@@ -92,9 +92,3 @@ struct ProfileDetailTopMediaView: View {
         } ?? 0
     }
 }
-
-struct ProfileDetailTopPhotoView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileDetailTopMediaView()
-    }
-}
